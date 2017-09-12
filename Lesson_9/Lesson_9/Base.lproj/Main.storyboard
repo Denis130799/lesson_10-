@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5g9-m6-4WV">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Item 2-->
+        <scene sceneID="y6Z-8E-ZJ4">
+            <objects>
+                <viewController id="sNV-cM-5LI" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dkk-14-X9q"/>
+                        <viewControllerLayoutGuide type="bottom" id="ouP-Qw-c7K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="52z-46-enR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4h-uS-KqT">
+                                <rect key="frame" x="123" y="318" width="128" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Show third screen "/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="Pga-Bl-uUY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bOs-Fb-EPN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="302" y="969"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="d72-Ov-a4w">
+            <objects>
+                <viewController id="JWc-8K-eic" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="m45-Fw-VRj"/>
+                        <viewControllerLayoutGuide type="bottom" id="TuE-ob-P1m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BvL-wK-n50">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UH8-bi-8jm">
+                                <rect key="frame" x="116" y="318" width="143" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Show second screen"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="dhd-Ee-yU1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6W4-af-ysT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="303" y="294"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="MD2-eT-HBb">
+            <objects>
+                <tabBarController id="5g9-m6-4WV" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="PjB-ic-wwR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="JWc-8K-eic" kind="relationship" relationship="viewControllers" id="8R9-mU-X2q"/>
+                        <segue destination="sNV-cM-5LI" kind="relationship" relationship="viewControllers" id="V5i-1l-2QC"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HOy-nM-yfm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-649" y="621"/>
+        </scene>
+    </scenes>
+</document>
