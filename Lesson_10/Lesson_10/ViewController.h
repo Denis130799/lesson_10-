@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Coffee.h"
 
 @interface ViewController : UIViewController
 
-@property (nonatomic, strong) NSString *titleVC;
+@property (nonatomic, strong) Coffee *coffee;
+
 
 
 @end

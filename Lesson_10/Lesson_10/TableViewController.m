@@ -8,10 +8,11 @@
 
 #import "TableViewController.h"
 #import "ViewController.h"
+#import "Coffee.h"
 
 @interface TableViewController ()
 
-@property (nonatomic, strong) NSMutableArray *array;
+@property (nonatomic, strong) NSMutableArray *arrayOfCoffee;
 
 @end
 
@@ -21,11 +22,15 @@
 {
     [super viewDidLoad];
     
-    self.array = [NSMutableArray new];
+    NSArray *coffeeNamesArray = @[@"Late", @"Cappuccino", @"Espresso", @"Americano", @"CaramelMacchiato", @"CoffeeGlace", @"CoffeeMocha"];
     
-    for (NSInteger i = 0; i < 20; i++)
+    self.arrayOfCoffee = [NSMutableArray new];
+    
+    for (NSInteger i = 0; i < coffeeNamesArray.count; i++)
     {
-        [self.array addObject:[NSString stringWithFormat:@"String: %lu", i+1]];
+        NSString *coffeeName = [coffeeNamesArray objectAtIndex:i];
+        Coffee *coffee = [Coffee coffeeWithName:coffeeName];
+        [self.arrayOfCoffee addObject:coffee];
     }
     
     // Uncomment the following line to preserve selection between presentations.
@@ -43,9 +48,10 @@
     
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return self.array.count;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+
+    return self.arrayOfCoffee.count;
 }
 
 
@@ -53,8 +59,9 @@
 {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
- 
-    cell.textLabel.text = self.array[indexPath.row];
+    
+    Coffee *coffee = self.arrayOfCoffee[indexPath.row];
+    cell.textLabel.text = coffee.nameCoffee;
     
     return cell;
     
@@ -81,7 +88,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [self.array removeObjectAtIndex:indexPath.row];
+        [self.arrayOfCoffee removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -92,11 +99,11 @@
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
-    NSString *firstText = [self.array objectAtIndex:fromIndexPath.row];
-    NSString *secondText = [self.array objectAtIndex:toIndexPath.row];
+    NSString *firstText = [self.arrayOfCoffee objectAtIndex:fromIndexPath.row];
+    NSString *secondText = [self.arrayOfCoffee objectAtIndex:toIndexPath.row];
     
-    [self.array replaceObjectAtIndex:toIndexPath.row withObject:firstText];
-    [self.array replaceObjectAtIndex:fromIndexPath.row withObject:secondText];
+    [self.arrayOfCoffee replaceObjectAtIndex:toIndexPath.row withObject:firstText];
+    [self.arrayOfCoffee replaceObjectAtIndex:fromIndexPath.row withObject:secondText];
 }
 
 
@@ -114,8 +121,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *selectedCellString = self.array[indexPath.row];
-    NSLog(@"Was selected: %@", selectedCellString);
+//    NSString *selectedCellString = self.arrayOfCoffee[indexPath.row];
+//    NSLog(@"Was selected: %@", selectedCellString);
 }
 
 
@@ -123,12 +130,13 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell*)cell {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UITableViewCell*)cell
+{
+    NSIndexPath *selectedCellIndexPath = [self.tableView indexPathForCell:cell];
+    Coffee *coffee = [self.arrayOfCoffee objectAtIndex:selectedCellIndexPath.row];
     
     ViewController *vc = [segue destinationViewController];
-    vc.titleVC = cell.textLabel.text;
+    vc.coffee = coffee;
 }
 
 
